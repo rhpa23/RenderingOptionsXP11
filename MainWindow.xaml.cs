@@ -121,6 +121,7 @@ namespace XP11SettingsTool
 
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.FileName = FileName;
+                saveFileDialog.Title = @"Save in folder: XP11\Resources\plugins\FlyWithLua\Scripts\";
 
                 if (Directory.Exists(Settings.Default.FlyWithLuaScriptsFolder))
                     saveFileDialog.InitialDirectory = Settings.Default.FlyWithLuaScriptsFolder;
