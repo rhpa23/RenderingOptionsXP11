@@ -36,16 +36,32 @@ namespace XP11SettingsTool
 
         private double GetDoubleValue(string tag)
         {
-            var linha = _lines.FirstOrDefault(l => l.Contains(tag));
-            var value = linha.Split(',')[1].Replace(")", "");
-            return Convert.ToDouble(value, new CultureInfo("en"));
+            try
+            {
+                var linha = _lines.FirstOrDefault(l => l.Contains(tag));
+                var value = linha.Split(',')[1].Replace(")", "");
+                return Convert.ToDouble(value, new CultureInfo("en"));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(string.Format("Value {0} not found on script file. Please reinstall.", tag), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return 0;
+            }
         }
 
         private bool GetBoolValue(string tag)
         {
-            var linha = _lines.FirstOrDefault(l => l.Contains(tag));
-            var value = linha.Split(',')[1].Replace(")", "");
-            return value.Trim() == "1.00";
+            try
+            {
+                var linha = _lines.FirstOrDefault(l => l.Contains(tag));
+                var value = linha.Split(',')[1].Replace(")", "");
+                return value.Trim() == "1.00";
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(string.Format("Value {0} not found on script file. Please reinstall.", tag), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
         }
 
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
@@ -121,6 +137,7 @@ namespace XP11SettingsTool
 
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.FileName = FileName;
+                saveFileDialog.DefaultExt = ".lua";
                 saveFileDialog.Title = @"Save in folder: XP11\Resources\plugins\FlyWithLua\Scripts\";
 
                 if (Directory.Exists(Settings.Default.FlyWithLuaScriptsFolder))
