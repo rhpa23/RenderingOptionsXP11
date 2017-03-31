@@ -3,6 +3,7 @@
 For Windows only. Required .Net Framework 4.5 or above.
 
 This windows application was made for personal and shared use freely for XP community with objective to facilitate datarefs changes  offered in X-Plane 11. I used as a reference the [XP 11 Advanced Settings](http://forums.x-plane.org/index.php?/files/file/35733-xp-11-advanced-settings/) made by Forkboy2 and some other data which I found relevant in the forums. Others may be added in the future. 
+In summary we will save a Lua Script with the values set on the screen and FlyWithLua plugin will set this values on XP11.
 
 
 To install
