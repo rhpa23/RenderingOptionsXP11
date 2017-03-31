@@ -127,6 +127,11 @@
             <Button Name="btnDefault" Content="Default" HorizontalAlignment="Right" Margin="0,148,17.4,0" VerticalAlignment="Top" Width="75" Click="btnDefault_Click"/>
             <Button Name="btnUndo" Content="Undo" HorizontalAlignment="Right" Margin="0,115,17.4,0" VerticalAlignment="Top" Width="75" Click="btnUndo_Click" />
             <Button Name="btnExit" Content="Exit" HorizontalAlignment="Right" Margin="0,184,17.4,0" VerticalAlignment="Top" Width="75" Click="btnExit_Click"/>
+            <Label Content="by rhpa23" HorizontalAlignment="Right" Margin="0,0,17.4,0" VerticalAlignment="Top">
+                <Label.Foreground>
+                    <SolidColorBrush Color="{DynamicResource Color_052}"/>
+                </Label.Foreground>
+            </Label>
         </Grid>
     </ScrollViewer>
 </Window>
