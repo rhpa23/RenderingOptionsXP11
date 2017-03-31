@@ -8,7 +8,7 @@ This windows application was made for personal and shared use freely for XP comm
 To install
 
 1. Install FlyWithLua Plugin for X-Plane 11. [Download](http://forums.x-plane.org/index.php?/files/file/35579-flywithlua-for-x-plane-11-and-10-windows-linux-mac-os-x-version/)
-2. Download "XP11SettingsTool.zip" file and unzip in the folder of your choice.
+2. Download "XP11SettingsTool.zip" file and unzip in the folder of your choice. [Download](https://github.com/rhpa23/RenderingOptionsXP11/raw/master/XP11SettingsTool.zip)
 3. Execute "XP11SettingsTool.exe" and enjoy.
 
 
