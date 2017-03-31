@@ -24,3 +24,7 @@ Considerations:
 
 ![Alt Text](https://github.com/rhpa23/RenderingOptionsXP11/blob/master/XP11_Settings_Tool.png)
 
+
+Thanks to Forkboy2 and X-Friese developers of "XP 11 Advanced Settings" and "FlyWithLua Plugin" 
+
+
