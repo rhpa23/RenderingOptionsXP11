@@ -13,12 +13,12 @@ To install
 
 
 Considerations:
-  *The "Settings.lua" file must be saved in FlywithLua "Scripts" folder. Like: <C:\X-Plane11\resources\plugins\FlywithLua\Scripts>
-  *To uninstall simple delete this "Settings.lua" file  that you saved on Scripts folder
-  *Click in "Default" button and save to return XP11 default values. 
-  *Click in "Undo" to return the last saved settings.
-  *Remember to save the settings before exit. 
-  *IMPORTANT: Not all ranges was tested. If you set a value where XP11 will rejects and you had a FlyWithLua error please report the issue here.
+  * The "Settings.lua" file must be saved in FlywithLua "Scripts" folder. Like: <C:\X-Plane11\resources\plugins\FlywithLua\Scripts>
+  * To uninstall simple delete this "Settings.lua" file  that you saved on Scripts folder
+  * Click in "Default" button and save to return XP11 default values. 
+  * Click in "Undo" to return the last saved settings.
+  * Remember to save the settings before exit. 
+  * IMPORTANT: Not all ranges was tested. If you set a value where XP11 will rejects and you had a FlyWithLua error please report the issue here.
 
 
 ![Alt Text](https://github.com/rhpa23/RenderingOptionsXP11/blob/master/XP11_Settings_Tool.png)
