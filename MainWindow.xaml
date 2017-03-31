@@ -2,11 +2,34 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Rendering Options for XP11 - (Required FlyWithLua Plugin)" Height="693.188" Width="829.736" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Light Theme -->
+                <!--<ResourceDictionary Source="Themes/Metro/Light/Metro.MSControls.Core.Implicit.xaml" />-->
+                <!--<ResourceDictionary Source="Themes/Metro/Light/Metro.MSControls.Toolkit.Implicit.xaml" />-->
+
+                <!-- Dark Theme -->
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Toolkit.Implicit.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Light Theme -->
+            <!--<SolidColorBrush x:Key="BackgroundKey" Color="#FFFFFF" />-->
+
+            <!-- Dark Theme -->
+            <SolidColorBrush x:Key="BackgroundKey" Color="#FF181818" />
+
+        </ResourceDictionary>
+    </Window.Resources>
+
     <ScrollViewer Margin="0,0,2.2,0" VerticalAlignment="Top">
-        <Grid Name="grdMain" Width="804" Height="970">
+        <Grid Name="grdMain" Background="{StaticResource BackgroundKey}">
 
             <GroupBox Header="MISC / RANDOM" HorizontalAlignment="Left" Margin="28,9,0,0" VerticalAlignment="Top" Height="377" Width="312">
-                <ListBox HorizontalAlignment="Left" Height="338" Margin="10,11,0,0" VerticalAlignment="Top" Width="275" BorderThickness="0" SelectionMode="Extended">
+                <ListBox HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" BorderThickness="0" SelectionMode="Extended">
                     <CheckBox Name="ckbRunwaysContours" Content="Runways follow terrain contours" Tag="sim/private/controls/reno/sloped_runways" />
                     <CheckBox Name="ckbBirdsAndDeer" Content="Draw birds and deer in nice weather" Tag="sim/private/controls/reno/draw_deer_birds" />
                     <CheckBox Name="ckbFireBaloons" Content="Draw fires and baloons" Tag="sim/private/controls/reno/draw_fire_ball" />
@@ -15,95 +38,95 @@
                     <CheckBox Name="ckbAtmosphericScattering" Content="Atmospheric scattering" Tag="sim/private/controls/reno/draw_scattering" />
                     <CheckBox Name="ckbVolumetricFog" Content="Draw volumetric fog" Tag="sim/private/controls/reno/draw_volume_fog01" />
                     <CheckBox Name="ckbPixelLighting" Content="Draw per pixel lighting" Tag="sim/private/controls/reno/draw_per_pix_liting" />
-                    <Label ToolTip="Default is 20000 meters. Recommend 7500." Content="{Binding ElementName=sldRoadTrafficDistance, Path=Value}" ContentStringFormat="Distance at which road traffic is visible: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldRoadTrafficDistance" Tag="sim/private/controls/cars/lod_min" ToolTip="Default is 20000 meters. Recommend 7500." Width="211" Interval="100"  AutoToolTipPlacement="BottomRight" Maximum="30000" Minimum="5000" Value="20000" LargeChange="100" SmallChange="100" TickFrequency="100" TickPlacement="TopLeft"  />
+                    <Label ToolTip="Default is 20000 meters. Recommend 7500." Content="{Binding ElementName=sldRoadTrafficDistance, Path=Value}" ContentStringFormat="Distance at which road traffic is visible: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldRoadTrafficDistance" Tag="sim/private/controls/cars/lod_min" ToolTip="Default is 20000 meters. Recommend 7500." Interval="100" AutoToolTipPlacement="BottomRight" Maximum="30000" Minimum="5000" Value="20000" LargeChange="100" SmallChange="100" TickFrequency="100" IsSnapToTickEnabled="True"  />
 
-                    <Label ToolTip="Default is 9260 meters. Recommend 3000." Content="{Binding ElementName=sldPlantsDistance, Path=Value}" ContentStringFormat="Distance at which static plans are visible: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldPlantsDistance" Tag="sim/private/controls/park/static_plane_build_dis" ToolTip="Default is 9260 meters. Recommend 3000." Width="211" Interval="10"  AutoToolTipPlacement="BottomRight" Maximum="10000" Minimum="1000" Value="9260" SmallChange="10" TickFrequency="10" LargeChange="10" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label ToolTip="Default is 9260 meters. Recommend 3000." Content="{Binding ElementName=sldPlantsDistance, Path=Value}" ContentStringFormat="Distance at which static plans are visible: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldPlantsDistance" Tag="sim/private/controls/park/static_plane_build_dis" ToolTip="Default is 9260 meters. Recommend 3000."  Interval="10"  AutoToolTipPlacement="BottomRight" Maximum="10000" Minimum="1000" Value="9260" SmallChange="10" TickFrequency="10" LargeChange="10" IsSnapToTickEnabled="True" />
 
-                    <Label ToolTip="1 (low) to 6 (high). Note this does not affect static planes manually placed by scenery designer, just the ones that automatically appear and start areas." Content="{Binding ElementName=sldStaticPlaneDensity, Path=Value}" ContentStringFormat="Static plane density: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldStaticPlaneDensity" Tag="sim/private/controls/park/static_plane_density" ToolTip="1 (low) to 6 (high). Note this does not affect static planes manually placed by scenery designer, just the ones that automatically appear and start areas." Width="211" Interval="10"  AutoToolTipPlacement="BottomRight" Maximum="6" Minimum="1" Value="3" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label ToolTip="1 (low) to 6 (high). Note this does not affect static planes manually placed by scenery designer, just the ones that automatically appear and start areas." Content="{Binding ElementName=sldStaticPlaneDensity, Path=Value}" ContentStringFormat="Static plane density: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldStaticPlaneDensity" Tag="sim/private/controls/park/static_plane_density" ToolTip="1 (low) to 6 (high). Note this does not affect static planes manually placed by scenery designer, just the ones that automatically appear and start areas."  Interval="10"  AutoToolTipPlacement="BottomRight" Maximum="6" Minimum="1" Value="3" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
 
                 </ListBox>
 
             </GroupBox>
-            <GroupBox Header="NUMBER OF WORLD OBJECTS" HorizontalAlignment="Left" Margin="362,10,0,0" VerticalAlignment="Top" Height="693" Width="312">
-                <ListBox Height="645" Margin="10,23,-2,0" VerticalAlignment="Top" BorderThickness="0">
-                    <Label ToolTip="0 (None) to 6 (Extreme)" Content="{Binding ElementName=sld3DObjectDensity, Path=Value}" ContentStringFormat="3D Object density: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sld3DObjectDensity" Tag="sim/private/controls/reno/draw_objs_06" ToolTip="0 (None) to 6 (Extreme)." Width="211" Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="6" Minimum="0" Value="3" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+            <GroupBox Header="NUMBER OF WORLD OBJECTS" HorizontalAlignment="Left" Margin="362,10,0,0" VerticalAlignment="Top" Height="648" Width="312">
+                <ListBox Margin="0,0,0,0" VerticalAlignment="Top" BorderThickness="0">
+                    <Label ToolTip="0 (None) to 6 (Extreme)" Content="{Binding ElementName=sld3DObjectDensity, Path=Value}" ContentStringFormat="3D Object density: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sld3DObjectDensity" Tag="sim/private/controls/reno/draw_objs_06" ToolTip="0 (None) to 6 (Extreme)."  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="6" Minimum="0" Value="3" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
 
-                    <Label ToolTip="0 (off) to 5 (very dense)" Content="{Binding ElementName=sldRoadTrafficDensity, Path=Value}" ContentStringFormat="Road traffic density: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldRoadTrafficDensity" Tag="sim/private/controls/reno/draw_cars_05" ToolTip="0 (off) to 5 (very dense)" Width="211" Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="5" Minimum="0" Value="3" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label ToolTip="0 (off) to 5 (very dense)" Content="{Binding ElementName=sldRoadTrafficDensity, Path=Value}" ContentStringFormat="Road traffic density: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldRoadTrafficDensity" Tag="sim/private/controls/reno/draw_cars_05" ToolTip="0 (off) to 5 (very dense)"  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="5" Minimum="0" Value="3" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
 
-                    <Label ToolTip="0 (None) to 3 (Extreme)" Content="{Binding ElementName=sldRoadDensity, Path=Value}" ContentStringFormat="Road density: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldRoadDensity" Tag="sim/private/controls/reno/draw_vecs_03" ToolTip="0 (None) to 3 (Extreme)" Width="211" Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="3" Minimum="0" Value="2" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label ToolTip="0 (None) to 3 (Extreme)" Content="{Binding ElementName=sldRoadDensity, Path=Value}" ContentStringFormat="Road density: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldRoadDensity" Tag="sim/private/controls/reno/draw_vecs_03" ToolTip="0 (None) to 3 (Extreme)"  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="3" Minimum="0" Value="2" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
 
-                    <Label ToolTip="0 (Low) to 3 (Extreme)" Content="{Binding ElementName=sldRunwayTaxiwayLighting, Path=Value}" ContentStringFormat="Runway and taxiway smoothness: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldRunwayTaxiwayLighting" Tag="sim/private/controls/reno/draw_detail_apt_03" ToolTip="0 (Low) to 3 (Extreme)" Width="211" Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="3" Minimum="0" Value="2" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label ToolTip="0 (Low) to 3 (Extreme)" Content="{Binding ElementName=sldRunwayTaxiwayLighting, Path=Value}" ContentStringFormat="Runway and taxiway smoothness: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldRunwayTaxiwayLighting" Tag="sim/private/controls/reno/draw_detail_apt_03" ToolTip="0 (Low) to 3 (Extreme)"  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="3" Minimum="0" Value="2" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
 
-                    <Label ToolTip="0 (Low) to 5 (Extreme)" Content="{Binding ElementName=sldForestDensity, Path=Value}" ContentStringFormat="Forest density: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldForestDensity" Tag="sim/private/controls/reno/draw_for_05" ToolTip="0 (Low) to 5 (Extreme)" Width="211" Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="5" Minimum="0" Value="3" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label ToolTip="0 (Low) to 5 (Extreme)" Content="{Binding ElementName=sldForestDensity, Path=Value}" ContentStringFormat="Forest density: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldForestDensity" Tag="sim/private/controls/reno/draw_for_05" ToolTip="0 (Low) to 5 (Extreme)"  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="5" Minimum="0" Value="3" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
 
-                    <Label ToolTip="0 (0%) to 1 (100%)" Content="{Binding ElementName=sldForestInnerRingDensity, Path=Value}" ContentStringFormat="Forest inner ring density: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldForestInnerRingDensity" Tag="sim/private/controls/forest/inn_ring_density" ToolTip="0 (0%) to 1 (100%)" Width="211" Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="1" Minimum="0" Value="0.4" SmallChange="0.1" TickFrequency="0.1" LargeChange="0.2" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label ToolTip="0 (0%) to 1 (100%)" Content="{Binding ElementName=sldForestInnerRingDensity, Path=Value}" ContentStringFormat="Forest inner ring density: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldForestInnerRingDensity" Tag="sim/private/controls/forest/inn_ring_density" ToolTip="0 (0%) to 1 (100%)"  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="1" Minimum="0" Value="0.4" SmallChange="0.1" TickFrequency="0.1" LargeChange="0.2" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
 
-                    <Label ToolTip="0 (0%) to 1 (100%)" Content="{Binding ElementName=sldForestMidRingDensity, Path=Value}" ContentStringFormat="Forest mid ring density: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldForestMidRingDensity" Tag="sim/private/controls/forest/mid_ring_density" ToolTip="0 (0%) to 1 (100%)" Width="211" Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="1" Minimum="0" Value="0.6" SmallChange="0.1" TickFrequency="0.1" LargeChange="0.2" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label ToolTip="0 (0%) to 1 (100%)" Content="{Binding ElementName=sldForestMidRingDensity, Path=Value}" ContentStringFormat="Forest mid ring density: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldForestMidRingDensity" Tag="sim/private/controls/forest/mid_ring_density" ToolTip="0 (0%) to 1 (100%)"  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="1" Minimum="0" Value="0.6" SmallChange="0.1" TickFrequency="0.1" LargeChange="0.2" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
 
-                    <Label ToolTip="0 (0%) to 1 (100%)" Content="{Binding ElementName=sldForestOuterRingDensity, Path=Value}" ContentStringFormat="Forest outer ring density: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldForestOuterRingDensity" Tag="sim/private/controls/forest/out_ring_density" ToolTip="0 (0%) to 1 (100%)" Width="211" Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="1" Minimum="0" Value="0.9" SmallChange="0.1" TickFrequency="0.1" LargeChange="0.2" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label ToolTip="0 (0%) to 1 (100%)" Content="{Binding ElementName=sldForestOuterRingDensity, Path=Value}" ContentStringFormat="Forest outer ring density: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldForestOuterRingDensity" Tag="sim/private/controls/forest/out_ring_density" ToolTip="0 (0%) to 1 (100%)"  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="1" Minimum="0" Value="0.9" SmallChange="0.1" TickFrequency="0.1" LargeChange="0.2" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
 
-                    <Label ToolTip="0.6 (low setting) to 0.75 (high setting)" Content="{Binding ElementName=sldFadeStartRate, Path=Value}" ContentStringFormat="Fade start rate: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldFadeStartRate" Tag="sim/private/controls/terrain/fade_start_rat" ToolTip="0.6 (low setting) to 0.75 (high setting)" Width="211" Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="0.75" Minimum="0.6" Value="0.7" SmallChange="0.01" TickFrequency="0.01" LargeChange="0.01" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label ToolTip="0.6 (low setting) to 0.75 (high setting)" Content="{Binding ElementName=sldFadeStartRate, Path=Value}" ContentStringFormat="Fade start rate: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldFadeStartRate" Tag="sim/private/controls/terrain/fade_start_rat" ToolTip="0.6 (low setting) to 0.75 (high setting)"  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="0.75" Minimum="0.6" Value="0.7" SmallChange="0.01" TickFrequency="0.01" LargeChange="0.01" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
 
-                    <Label ToolTip="0.72 (low setting) to 1.0 (high setting)" Content="{Binding ElementName=sldTileLODbias, Path=Value}" ContentStringFormat="Tile LOD bias: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldTileLODbias" Tag="sim/private/controls/ag/tile_lod_bias" ToolTip="0.72 (low setting) to 1.0 (high setting)" Width="211" Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="1" Minimum="0.72" Value="0.83" SmallChange="0.01" TickFrequency="0.01" LargeChange="0.01" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label ToolTip="0.72 (low setting) to 1.0 (high setting)" Content="{Binding ElementName=sldTileLODbias, Path=Value}" ContentStringFormat="Tile LOD bias: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldTileLODbias" Tag="sim/private/controls/ag/tile_lod_bias" ToolTip="0.72 (low setting) to 1.0 (high setting)"  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="1" Minimum="0.72" Value="0.83" SmallChange="0.01" TickFrequency="0.01" LargeChange="0.01" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
 
-                    <Label ToolTip="0.72 (low setting) to 1.0 (high setting)" Content="{Binding ElementName=sldCompositeFarDistanceBias, Path=Value}" ContentStringFormat="Composite far distance bias: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldCompositeFarDistanceBias" Tag="sim/private/controls/terrain/composite_far_dist_bias" ToolTip="0.72 (low setting) to 1.0 (high setting)" Width="211" Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="1" Minimum="0.72" Value="0.83" SmallChange="0.01" TickFrequency="0.01" LargeChange="0.01" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label ToolTip="0.72 (low setting) to 1.0 (high setting)" Content="{Binding ElementName=sldCompositeFarDistanceBias, Path=Value}" ContentStringFormat="Composite far distance bias: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldCompositeFarDistanceBias" Tag="sim/private/controls/terrain/composite_far_dist_bias" ToolTip="0.72 (low setting) to 1.0 (high setting)"  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="1" Minimum="0.72" Value="0.83" SmallChange="0.01" TickFrequency="0.01" LargeChange="0.01" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
                 </ListBox>
             </GroupBox>
-            <GroupBox Header="REFLECTION DETAIL" HorizontalAlignment="Left" Margin="28,391,0,0" VerticalAlignment="Top" Height="134" Width="312">
-                <ListBox Margin="10,10,-2.8,2.2" BorderThickness="0">
+            <GroupBox Header="REFLECTION DETAIL" HorizontalAlignment="Left" Margin="28,391,0,0" VerticalAlignment="Top" Height="145" Width="312">
+                <ListBox Margin="0,0,0,0" BorderThickness="0">
                     <CheckBox Name="ckbReflectiveWater" Content="Reflective water" Tag="sim/private/controls/caps/use_reflective_water" />
                     <CheckBox Name="ckbDrawFFTwater" Content="Draw FFT water" Tag="sim/private/controls/reno/draw_fft_water" />
-                    <Label ToolTip="0 (None) to 5 (Complete)" Content="{Binding ElementName=sldWaterReflectionDetail, Path=Value}" ContentStringFormat="Water reflection detail: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldWaterReflectionDetail" Tag="sim/private/controls/reno/draw_reflect_water05" ToolTip="0 (None) to 5 (Complete)" Width="211" Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="5" Minimum="0" Value="3" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label ToolTip="0 (None) to 5 (Complete)" Content="{Binding ElementName=sldWaterReflectionDetail, Path=Value}" ContentStringFormat="Water reflection detail: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldWaterReflectionDetail" Tag="sim/private/controls/reno/draw_reflect_water05" ToolTip="0 (None) to 5 (Complete)"  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="5" Minimum="0" Value="3" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
 
                 </ListBox>
             </GroupBox>
-            <GroupBox Header="TEXTURE QUALITY" HorizontalAlignment="Left" Margin="362,721,0,0" VerticalAlignment="Top" Height="175" Width="312">
-                <ListBox HorizontalAlignment="Left" Height="143" Margin="10,10,-2.8,-0.2" VerticalAlignment="Top" Width="292" BorderThickness="0">
+            <GroupBox Header="TEXTURE QUALITY" HorizontalAlignment="Left" Margin="362,665,0,0" VerticalAlignment="Top" Height="231" Width="312">
+                <ListBox Margin="0,0,0,0" VerticalAlignment="Top"  BorderThickness="0">
                     <CheckBox Name="ckbCompressTextures" Content="Compress textures to save VRAM" Tag="sim/private/controls/reno/comp_texes" />
                     <CheckBox Name="ckbUseBumpMapTextures" Content="Use bump map textures" Tag="sim/private/controls/reno/use_bump_maps" />
                     <CheckBox Name="ckbUseUseDetailTexturesDecals" Content="Use detail (aka gritty) textures or decals" Tag="sim/private/controls/reno/use_detail_textures" />
                     <CheckBox Name="ckbAmbientOcclusion" Content="Ambient Occlusion" Tag="sim/private/controls/ssao/enable" />
-                    <Label ToolTip="Try lower values if you have a low end system" Content="{Binding ElementName=sldMaximumDistanceScenery, Path=Value}" ContentStringFormat="Maximum distance scenery is visible: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldMaximumDistanceScenery" Tag="sim/private/controls/skyc/max_dsf_vis_ever" ToolTip="try lower values if you have a low end system" Width="211" Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="10000" Minimum="3000" Value="10000" SmallChange="100" TickFrequency="100" LargeChange="100" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
-                    <Label ToolTip="Adjust fading of ground textures in the distance." Content="{Binding ElementName=sldFadingGroundTexturesDistance, Path=Value}" ContentStringFormat="Fading of ground textures in the distance: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldFadingGroundTexturesDistance" Tag="sim/private/controls/skyc/dsf_fade_ratio" ToolTip="Adjust fading of ground textures in the distance." Width="211" Interval="1"  Maximum="0.9" Minimum="0.1" Value="0.9" SmallChange="0.1" TickFrequency="0.1" LargeChange="0.1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label ToolTip="Try lower values if you have a low end system" Content="{Binding ElementName=sldMaximumDistanceScenery, Path=Value}" ContentStringFormat="Maximum distance scenery is visible: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldMaximumDistanceScenery" Tag="sim/private/controls/skyc/max_dsf_vis_ever" ToolTip="try lower values if you have a low end system"  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="10000" Minimum="3000" Value="10000" SmallChange="100" TickFrequency="100" LargeChange="100" IsSnapToTickEnabled="True" />
+                    <Label ToolTip="Adjust fading of ground textures in the distance." Content="{Binding ElementName=sldFadingGroundTexturesDistance, Path=Value}" ContentStringFormat="Fading of ground textures in the distance: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldFadingGroundTexturesDistance" Tag="sim/private/controls/skyc/dsf_fade_ratio" ToolTip="Adjust fading of ground textures in the distance."  Interval="1"  Maximum="0.9" Minimum="0.1" Value="0.9" SmallChange="0.1" TickFrequency="0.1" LargeChange="0.1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
                 </ListBox>
             </GroupBox>
             <GroupBox Header="SHADOWS ON SCENERY" HorizontalAlignment="Left" Margin="28,535,0,0" VerticalAlignment="Top" Height="361" Width="312">
                 <ListBox HorizontalAlignment="Left" Margin="0,10,-2.8,2.2" Width="302" BorderThickness="0">
-                    <Label ToolTip="Cascading Shadow Maps Exterior Quality (Higher numbers reduce jagged edges of shadows)." Content="{Binding ElementName=sldCascadingShadowMapsExteriorQuality, Path=Value}" ContentStringFormat="Cascading Shadow Maps Exterior Quality: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldCascadingShadowMapsExteriorQuality" Tag="sim/private/controls/shadow/csm_split_exterior" ToolTip="Cascading Shadow Maps Exterior Quality (Higher numbers reduce jagged edges of shadows)." Width="211" Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="8" Minimum="1" Value="2" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
-                    <Label Content="{Binding ElementName=sldShadowFadeDistance, Path=Value}" ContentStringFormat="Shadow fade distance: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldShadowFadeDistance" Tag="sim/private/controls/shadow/csm/far_limit" Width="211" Interval="1" AutoToolTipPlacement="BottomRight" Maximum="1500" Minimum="500" Value="1000" SmallChange="100" TickFrequency="100" LargeChange="100" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
-                    <Label Content="{Binding ElementName=sldShadowTextureSize, Path=Value}" ContentStringFormat="Shadow texture size: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldShadowTextureSize" Tag="sim/private/controls/fbo/shadow_cam_size" Width="211" Interval="1" AutoToolTipPlacement="BottomRight" Maximum="4096" Minimum="2048" Value="2048" SmallChange="2048" TickFrequency="2048" LargeChange="2048" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
-                    <Label Content="{Binding ElementName=sldCockpitNearAdjust, Path=Value}" ContentStringFormat="Shadow cockpit near adjust: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldCockpitNearAdjust" Tag="sim/private/controls/shadow/cockpit_near_adjust" Width="211" Interval="1" AutoToolTipPlacement="BottomRight" Maximum="8" Minimum="1" Value="1" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
-                    <Label Content="{Binding ElementName=sldCockpitNearProxy, Path=Value}" ContentStringFormat="Shadow cockpit near proxy: {0}" Height="26" Padding="5,10,5,0" />
-                    <Slider Name="sldCockpitNearProxy" Tag="sim/private/controls/shadow/cockpit_near_proxy" Width="211" Interval="1" AutoToolTipPlacement="BottomRight" Maximum="20" Minimum="1" Value="3" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label ToolTip="Cascading Shadow Maps Exterior Quality (Higher numbers reduce jagged edges of shadows)." Content="{Binding ElementName=sldCascadingShadowMapsExteriorQuality, Path=Value}" ContentStringFormat="Cascading Shadow Maps Exterior Quality: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldCascadingShadowMapsExteriorQuality" Tag="sim/private/controls/shadow/csm_split_exterior" ToolTip="Cascading Shadow Maps Exterior Quality (Higher numbers reduce jagged edges of shadows)."  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="8" Minimum="1" Value="2" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label Content="{Binding ElementName=sldShadowFadeDistance, Path=Value}" ContentStringFormat="Shadow fade distance: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldShadowFadeDistance" Tag="sim/private/controls/shadow/csm/far_limit"  Interval="1" AutoToolTipPlacement="BottomRight" Maximum="1500" Minimum="500" Value="1000" SmallChange="100" TickFrequency="100" LargeChange="100" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label Content="{Binding ElementName=sldShadowTextureSize, Path=Value}" ContentStringFormat="Shadow texture size: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldShadowTextureSize" Tag="sim/private/controls/fbo/shadow_cam_size"  Interval="1" AutoToolTipPlacement="BottomRight" Maximum="4096" Minimum="2048" Value="2048" SmallChange="2048" TickFrequency="2048" LargeChange="2048" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label Content="{Binding ElementName=sldCockpitNearAdjust, Path=Value}" ContentStringFormat="Shadow cockpit near adjust: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldCockpitNearAdjust" Tag="sim/private/controls/shadow/cockpit_near_adjust"  Interval="1" AutoToolTipPlacement="BottomRight" Maximum="8" Minimum="1" Value="1" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label Content="{Binding ElementName=sldCockpitNearProxy, Path=Value}" ContentStringFormat="Shadow cockpit near proxy: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldCockpitNearProxy" Tag="sim/private/controls/shadow/cockpit_near_proxy"  Interval="1" AutoToolTipPlacement="BottomRight" Maximum="20" Minimum="1" Value="3" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
                 </ListBox>
 
             </GroupBox>
 
-            <Button Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="712,66,0,0" VerticalAlignment="Top" Width="75" Click="btnSave_Click"/>
-            <Button Name="btnDefault" Content="Default" HorizontalAlignment="Left" Margin="712,148,0,0" VerticalAlignment="Top" Width="75" Click="btnDefault_Click"/>
-            <Button Name="btnUndo" Content="Undo" HorizontalAlignment="Left" Margin="712,115,0,0" VerticalAlignment="Top" Width="75" Click="btnUndo_Click" />
-            <Button Name="btnExit" Content="Exit" HorizontalAlignment="Left" Margin="712,184,0,0" VerticalAlignment="Top" Width="75" Click="btnExit_Click"/>
+            <Button Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="698,66,0,0" VerticalAlignment="Top" Width="75" Click="btnSave_Click"/>
+            <Button Name="btnDefault" Content="Default" HorizontalAlignment="Left" Margin="698,148,0,0" VerticalAlignment="Top" Width="75" Click="btnDefault_Click"/>
+            <Button Name="btnUndo" Content="Undo" HorizontalAlignment="Left" Margin="698,115,0,0" VerticalAlignment="Top" Width="75" Click="btnUndo_Click" />
+            <Button Name="btnExit" Content="Exit" HorizontalAlignment="Left" Margin="698,184,0,0" VerticalAlignment="Top" Width="75" Click="btnExit_Click"/>
         </Grid>
     </ScrollViewer>
 </Window>
