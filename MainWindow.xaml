@@ -102,9 +102,9 @@
                     <CheckBox Name="ckbUseUseDetailTexturesDecals" Content="Use detail (aka gritty) textures or decals" Tag="sim/private/controls/reno/use_detail_textures" />
                     <CheckBox Name="ckbAmbientOcclusion" Content="Ambient Occlusion" Tag="sim/private/controls/ssao/enable" />
                     <Label ToolTip="Try lower values if you have a low end system" Content="{Binding ElementName=sldMaximumDistanceScenery, Path=Value}" ContentStringFormat="Maximum distance scenery is visible: {0}" Padding="0,8,0,0" />
-                    <Slider Name="sldMaximumDistanceScenery" Tag="sim/private/controls/skyc/max_dsf_vis_ever" ToolTip="try lower values if you have a low end system"  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="10000" Minimum="3000" Value="10000" SmallChange="100" TickFrequency="100" LargeChange="100" IsSnapToTickEnabled="True" />
+                    <Slider Name="sldMaximumDistanceScenery" Tag="sim/private/controls/skyc/max_dsf_vis_ever" ToolTip="try lower values if you have a low end system"  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="100000" Minimum="10000" Value="100000" SmallChange="100" TickFrequency="100" LargeChange="100" IsSnapToTickEnabled="True" />
                     <Label ToolTip="Adjust fading of ground textures in the distance." Content="{Binding ElementName=sldFadingGroundTexturesDistance, Path=Value}" ContentStringFormat="Fading of ground textures in the distance: {0}" Padding="0,8,0,0" />
-                    <Slider Name="sldFadingGroundTexturesDistance" Tag="sim/private/controls/skyc/dsf_fade_ratio" ToolTip="Adjust fading of ground textures in the distance."  Interval="1"  Maximum="0.9" Minimum="0.1" Value="0.9" SmallChange="0.1" TickFrequency="0.1" LargeChange="0.1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Slider Name="sldFadingGroundTexturesDistance" Tag="sim/private/controls/skyc/dsf_fade_ratio" ToolTip="Adjust fading of ground textures in the distance."  Interval="1"  Maximum="4" Minimum="0.1" Value="0.9" SmallChange="0.1" TickFrequency="0.1" LargeChange="0.1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
                 </ListBox>
             </GroupBox>
             <GroupBox Header="SHADOWS ON SCENERY" HorizontalAlignment="Left" Margin="28,535,0,0" VerticalAlignment="Top" Height="361" Width="312">

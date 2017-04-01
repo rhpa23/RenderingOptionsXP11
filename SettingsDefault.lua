@@ -95,7 +95,7 @@ function apply_settings()
 	set( "sim/private/controls/fbo/shadow_cam_size", 4096.00)
 
 	--The following values adjust the maximum distance ground scenery is visible.  Default is 10000.  Larger values seem to have no affect, but you might try lower values if you have a low end system.
-	set( "sim/private/controls/skyc/max_dsf_vis_ever", 10000.00)
+	set( "sim/private/controls/skyc/max_dsf_vis_ever", 100000.00)
 
 	--The following values adjust fading of ground textures in the distance.  Default is 0.90 in XP10 (0.75 in XP 11).  Higher values have no effect.  But you might try lower values (0.10 for example) if you want the ground scenery to fade to brown more gradually in the distance.
 	set( "sim/private/controls/skyc/dsf_fade_ratio", 0.90)
