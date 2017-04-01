@@ -9,7 +9,7 @@ In summary we will save a Lua Script with the values set on the screen and FlyWi
 To install
 
 1. Install FlyWithLua Plugin for X-Plane 11. [Download](http://forums.x-plane.org/index.php?/files/file/35579-flywithlua-for-x-plane-11-and-10-windows-linux-mac-os-x-version/)
-2. Download "XP11SettingsTool.zip" file and unzip in the folder of your choice. [Download](https://github.com/rhpa23/RenderingOptionsXP11/raw/master/XP11SettingsTool.zip)
+2. Download "XP11SettingsTool.zip" file and unzip in the folder of your choice. [Download](http://forums.x-plane.org/index.php?/files/file/36925-rendering-options-for-xp11/)
 3. Execute "XP11SettingsTool.exe" and enjoy.
 
 
