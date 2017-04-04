@@ -39,12 +39,7 @@ namespace XP11SettingsTool
             try
             {
                 var linha = _lines.FirstOrDefault(l => l.Contains(tag));
-                if (linha == null)
-                {
-                    // Get from default script to avalible updates without erros.
-                    var linhasDefault = File.ReadLines(FileDefaultName);
-                    linha = linhasDefault.FirstOrDefault(l => l.Contains(tag));
-                }
+                linha = CheckNotFoundLine(tag, linha);
 
                 var value = linha.Split(',')[1].Replace(")", "");
                 return Convert.ToDouble(value, new CultureInfo("en"));
@@ -56,17 +51,28 @@ namespace XP11SettingsTool
             }
         }
 
+        private string CheckNotFoundLine(string tag, string linha)
+        {
+            if (linha == null)
+            {
+                // Get from default script to avalible updates without erros.
+                var linhasDefault = File.ReadLines(FileDefaultName);
+                linha = linhasDefault.FirstOrDefault(l => l.Contains(tag));
+                List<string> linesList = _lines.ToList();
+                
+                linesList.Insert(linesList.FindLastIndex(x => x.Contains("end")) - 2, linha);
+
+                _lines = linesList.ToArray();
+            }
+            return linha;
+        }
+
         private bool GetBoolValue(string tag)
         {
             try
             {
                 var linha = _lines.FirstOrDefault(l => l.Contains(tag));
-                if (linha == null)
-                {
-                    // Get from default script to avalible updates without erros.
-                    var linhasDefault = File.ReadLines(FileDefaultName);
-                    linha = linhasDefault.FirstOrDefault(l => l.Contains(tag));
-                }
+                linha = CheckNotFoundLine(tag, linha);
 
                 var value = linha.Split(',')[1].Replace(")", "");
                 return value.Trim() == "1.00";
@@ -134,6 +140,7 @@ namespace XP11SettingsTool
                 foreach (CheckBox ckb in FindVisualChildren<CheckBox>(grdMain))
                 {
                     var line = _lines.FirstOrDefault(l => l.Contains(ckb.Tag.ToString()));
+                    line = CheckNotFoundLine(ckb.Tag.ToString(), line);
                     var value = ckb.IsChecked.Value ? " 1.00)" : " 0.00)";
                     var newLine = line.Replace(line.Split(',')[1], value);
 
@@ -143,6 +150,7 @@ namespace XP11SettingsTool
                 foreach (Slider sld in FindVisualChildren<Slider>(grdMain))
                 {
                     var line = _lines.FirstOrDefault(l => l.Contains(sld.Tag.ToString()));
+                    line = CheckNotFoundLine(sld.Tag.ToString(), line);
                     var value = " " + sld.Value.ToString("0.00", new CultureInfo("en")) + ")";
                     var newLine = line.Replace(line.Split(',')[1], value);
 
