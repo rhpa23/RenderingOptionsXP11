@@ -39,6 +39,13 @@ namespace XP11SettingsTool
             try
             {
                 var linha = _lines.FirstOrDefault(l => l.Contains(tag));
+                if (linha == null)
+                {
+                    // Get from default script to avalible updates without erros.
+                    var linhasDefault = File.ReadLines(FileDefaultName);
+                    linha = linhasDefault.FirstOrDefault(l => l.Contains(tag));
+                }
+
                 var value = linha.Split(',')[1].Replace(")", "");
                 return Convert.ToDouble(value, new CultureInfo("en"));
             }
@@ -54,6 +61,13 @@ namespace XP11SettingsTool
             try
             {
                 var linha = _lines.FirstOrDefault(l => l.Contains(tag));
+                if (linha == null)
+                {
+                    // Get from default script to avalible updates without erros.
+                    var linhasDefault = File.ReadLines(FileDefaultName);
+                    linha = linhasDefault.FirstOrDefault(l => l.Contains(tag));
+                }
+
                 var value = linha.Split(',')[1].Replace(")", "");
                 return value.Trim() == "1.00";
             }
