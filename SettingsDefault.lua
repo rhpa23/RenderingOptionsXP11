@@ -68,7 +68,7 @@ function apply_settings()
 	set( "sim/private/controls/terrain/composite_far_dist_bias", 0.83)
 
 	--Water reflection detail. 0 (None) to 5 (Complete)
-	set( "sim/private/controls/reno/draw_reflect_water05", 3.00)
+	set( "sim/private/controls/reno/draw_reflect_water05", 0.00)
 
 	--Compress textures to save VRAM. 0 (off) or 1 (on)
 	set( "sim/private/controls/reno/comp_texes", 1.00)
@@ -111,6 +111,12 @@ function apply_settings()
 
 	-- Cockpit near adjust
 	set("sim/private/controls/shadow/cockpit_near_adjust", 1.0)
+
+	-- Controls how much cloud puffs are depicted (lower numbers produce more cloud puffs).
+	set("sim/private/controls/clouds/overdraw_control", 0.5)
+
+	-- Increase clouds radius
+	set("sim/private/controls/clouds/plot_radius", 2.0)
 	
 	do_once=true
     end

@@ -50,8 +50,15 @@
                 </ListBox>
 
             </GroupBox>
-            <GroupBox Header="NUMBER OF WORLD OBJECTS" HorizontalAlignment="Left" Margin="362,10,0,0" VerticalAlignment="Top" Height="648" Width="312">
+            <GroupBox Header="NUMBER OF WORLD OBJECTS" HorizontalAlignment="Left" Margin="362,10,0,0" VerticalAlignment="Top" Height="728" Width="312">
                 <ListBox Margin="0,0,0,0" VerticalAlignment="Top" BorderThickness="0">
+
+                    <Label ToolTip="Lower numbers produce more cloud puffs." Content="{Binding ElementName=sldHowMuchCloudPuffsArDepictedy, Path=Value}" ContentStringFormat="Number of cloud puffs: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldHowMuchCloudPuffsArDepictedy" Tag="sim/private/controls/clouds/overdraw_control" ToolTip="Lower numbers produce more cloud puffs."  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="2" Minimum="0.1" Value="0.65" SmallChange="0.05" TickFrequency="0.05" LargeChange="0.05" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+
+                    <Label ToolTip="Increase clouds radius 1 to 3.5" Content="{Binding ElementName=sldSizeEeachCloudPuff, Path=Value}" ContentStringFormat="Size of each cloud puff: {0}" Padding="0,8,0,0" />
+                    <Slider Name="sldSizeEeachCloudPuff" Tag="sim/private/controls/clouds/plot_radius" ToolTip="Increase clouds radius 1 to 3.5"  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="3.5" Minimum="1" Value="2" SmallChange="0.5" TickFrequency="0.5" LargeChange="0.5" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+
                     <Label ToolTip="0 (None) to 6 (Extreme)" Content="{Binding ElementName=sld3DObjectDensity, Path=Value}" ContentStringFormat="3D Object density: {0}" Padding="0,8,0,0" />
                     <Slider Name="sld3DObjectDensity" Tag="sim/private/controls/reno/draw_objs_06" ToolTip="0 (None) to 6 (Extreme)."  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="6" Minimum="0" Value="3" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
 
@@ -86,7 +93,7 @@
                     <Slider Name="sldCompositeFarDistanceBias" Tag="sim/private/controls/terrain/composite_far_dist_bias" ToolTip="0.72 (low setting) to 1.0 (high setting)"  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="1" Minimum="0.72" Value="0.83" SmallChange="0.01" TickFrequency="0.01" LargeChange="0.01" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
                 </ListBox>
             </GroupBox>
-            <GroupBox Header="REFLECTION DETAIL" HorizontalAlignment="Left" Margin="28,391,0,0" VerticalAlignment="Top" Height="145" Width="312">
+            <GroupBox Header="REFLECTION DETAIL" HorizontalAlignment="Left" Margin="28,395,0,0" VerticalAlignment="Top" Height="145" Width="312">
                 <ListBox Margin="0,0,0,0" BorderThickness="0">
                     <CheckBox Name="ckbReflectiveWater" Content="Reflective water" Tag="sim/private/controls/caps/use_reflective_water" />
                     <CheckBox Name="ckbDrawFFTwater" Content="Draw FFT water" Tag="sim/private/controls/reno/draw_fft_water" />
@@ -95,7 +102,7 @@
 
                 </ListBox>
             </GroupBox>
-            <GroupBox Header="TEXTURE QUALITY" HorizontalAlignment="Left" Margin="362,665,0,0" VerticalAlignment="Top" Height="231" Width="312">
+            <GroupBox Header="TEXTURE QUALITY" HorizontalAlignment="Left" Margin="362,742,0,0" VerticalAlignment="Top" Height="231" Width="312">
                 <ListBox Margin="0,0,0,0" VerticalAlignment="Top"  BorderThickness="0">
                     <CheckBox Name="ckbCompressTextures" Content="Compress textures to save VRAM" Tag="sim/private/controls/reno/comp_texes" />
                     <CheckBox Name="ckbUseBumpMapTextures" Content="Use bump map textures" Tag="sim/private/controls/reno/use_bump_maps" />
@@ -107,7 +114,7 @@
                     <Slider Name="sldFadingGroundTexturesDistance" Tag="sim/private/controls/skyc/dsf_fade_ratio" ToolTip="Adjust fading of ground textures in the distance."  Interval="1"  Maximum="4" Minimum="0.1" Value="0.9" SmallChange="0.1" TickFrequency="0.1" LargeChange="0.1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
                 </ListBox>
             </GroupBox>
-            <GroupBox Header="SHADOWS ON SCENERY" HorizontalAlignment="Left" Margin="28,535,0,0" VerticalAlignment="Top" Height="361" Width="312">
+            <GroupBox Header="SHADOWS ON SCENERY" HorizontalAlignment="Left" Margin="28,548,0,0" VerticalAlignment="Top" Height="415" Width="312">
                 <ListBox HorizontalAlignment="Left" Margin="0,10,-2.8,2.2" Width="302" BorderThickness="0">
                     <Label ToolTip="Cascading Shadow Maps Exterior Quality (Higher numbers reduce jagged edges of shadows)." Content="{Binding ElementName=sldCascadingShadowMapsExteriorQuality, Path=Value}" ContentStringFormat="Cascading Shadow Maps Exterior Quality: {0}" Padding="0,8,0,0" />
                     <Slider Name="sldCascadingShadowMapsExteriorQuality" Tag="sim/private/controls/shadow/csm_split_exterior" ToolTip="Cascading Shadow Maps Exterior Quality (Higher numbers reduce jagged edges of shadows)."  Interval="1"  AutoToolTipPlacement="BottomRight" Maximum="8" Minimum="1" Value="2" SmallChange="1" TickFrequency="1" LargeChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
