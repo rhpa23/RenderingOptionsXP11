@@ -32,7 +32,7 @@
                 <ListBox HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" BorderThickness="0" SelectionMode="Extended">
                     <CheckBox Name="ckbRunwaysContours" Content="Runways follow terrain contours" Tag="sim/private/controls/reno/sloped_runways" />
                     <CheckBox Name="ckbBirdsAndDeer" Content="Draw birds and deer in nice weather" Tag="sim/private/controls/reno/draw_deer_birds" />
-                    <CheckBox Name="ckbFireBaloons" Content="Draw fires and baloons" Tag="sim/private/controls/reno/draw_fire_ball" />
+                    <CheckBox Name="ckbFireBaloons" Content="Draw fires and balloons" Tag="sim/private/controls/reno/draw_fire_ball" />
                     <CheckBox Name="ckbCarriersFrigates" Content="Draw aircraft carriers and frigates" Tag="sim/private/controls/reno/draw_boats" />
                     <CheckBox Name="ckbAuroraBorealis" Content="Draw aurora Borealis" Tag="sim/private/controls/reno/draw_aurora" />
                     <CheckBox Name="ckbAtmosphericScattering" Content="Atmospheric scattering" Tag="sim/private/controls/reno/draw_scattering" />
