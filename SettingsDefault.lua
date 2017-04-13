@@ -1,8 +1,94 @@
 local start_time = os.clock()
 local do_once = false
 
+function save_default_settings()
+	
+	DataRef( "AURORA_BOREALIS", "sim/private/controls/reno/draw_aurora" )
+	DataRef( "CARRIERS_FRIGATES", "sim/private/controls/reno/draw_boats" )
+	DataRef( "BIRDS_DEER", "sim/private/controls/reno/draw_deer_birds" )
+	DataRef( "FIRES_BALOONS", "sim/private/controls/reno/draw_fire_ball" )
+	DataRef( "DISTANCE_TRAFFIC", "sim/private/controls/cars/lod_min" )
+	DataRef( "DISTANCE_PLANS", "sim/private/controls/park/static_plane_build_dis" )
+	DataRef( "RUNWAYS_CONTOURS", "sim/private/controls/reno/sloped_runways" )
+	DataRef( "ATMOSPHERIC_SCATTERING", "sim/private/controls/reno/draw_scattering" )
+	DataRef( "VOLUMETRIC_FOG", "sim/private/controls/reno/draw_volume_fog01" )
+	DataRef( "PIXEL_LIGHTING", "sim/private/controls/reno/draw_per_pix_liting" )
+	DataRef( "OBJECT_DENSITY", "sim/private/controls/reno/draw_objs_06" )
+	DataRef( "TRAFFIC_DENSITY", "sim/private/controls/reno/draw_cars_05" )
+	DataRef( "ROAD_DENSITY", "sim/private/controls/reno/draw_vecs_03" )
+	DataRef( "TAXIWAY_SMOOTHNESS", "sim/private/controls/reno/draw_detail_apt_03" )
+	DataRef( "FOREST_DENSITY", "sim/private/controls/reno/draw_for_05" )
+	DataRef( "FOREST_INNER", "sim/private/controls/forest/inn_ring_density" )
+	DataRef( "FOREST_MID", "sim/private/controls/forest/mid_ring_density" )
+	DataRef( "FOREST_OUTER", "sim/private/controls/forest/out_ring_density" )
+	DataRef( "FADE_RATE", "sim/private/controls/terrain/fade_start_rat" )
+	DataRef( "LOD_BIAS", "sim/private/controls/ag/tile_lod_bias" )
+	DataRef( "DISTANCE_BIAS", "sim/private/controls/terrain/composite_far_dist_bias" )
+	DataRef( "WATER_REFLECTION", "sim/private/controls/reno/draw_reflect_water05" )
+	DataRef( "COMPRESS_TEXTURES", "sim/private/controls/reno/comp_texes" )
+	DataRef( "BUMPMAP_TEXTURES", "sim/private/controls/reno/use_bump_maps" )
+	DataRef( "DETAIL_TEXTURES", "sim/private/controls/reno/use_detail_textures" )
+	DataRef( "AMBIENT_OCCLUSION", "sim/private/controls/ssao/enable" )
+	DataRef( "STATIC_PLANE_DENSITY", "sim/private/controls/park/static_plane_density" )
+	DataRef( "SHADOW_EXTERIOR", "sim/private/controls/shadow/csm_split_exterior" )
+	DataRef( "SHADOW_FADE", "sim/private/controls/shadow/csm/far_limit" )
+	DataRef( "SHADOW_SIZE", "sim/private/controls/fbo/shadow_cam_size" )
+	DataRef( "GROUND_VISIBLE", "sim/private/controls/skyc/max_dsf_vis_ever" )
+	DataRef( "GROUND_FADING", "sim/private/controls/skyc/dsf_fade_ratio" )
+	DataRef( "REFLECTIVE_WATER", "sim/private/controls/caps/use_reflective_water" )
+	DataRef( "FFT_WATER", "sim/private/controls/reno/draw_fft_water" )
+	DataRef( "COCKPIT_PROXY", "sim/private/controls/shadow/cockpit_near_proxy" )
+	DataRef( "COCKPIT_NEAR", "sim/private/controls/shadow/cockpit_near_adjust" )
+	DataRef( "CLOUD_PUFFS", "sim/private/controls/clouds/overdraw_control" )
+	DataRef( "CLOUDS_RADIUS", "sim/private/controls/clouds/plot_radius" )
+	
+
+	defaultfile = os.open(SCRIPT_DIRECTORY .. "default_settings.txt", "w")
+	defaultfile:write("sim/private/controls/reno/draw_aurora=" .. AURORA_BOREALIS, "\n")
+	defaultfile:write("sim/private/controls/reno/draw_boats=" .. CARRIERS_FRIGATES, "\n")
+	defaultfile:write("sim/private/controls/reno/draw_deer_birds=" .. BIRDS_DEER, "\n")
+	defaultfile:write("sim/private/controls/reno/draw_fire_ball=" .. FIRES_BALOONS, "\n")
+	defaultfile:write("sim/private/controls/cars/lod_min=" .. DISTANCE_TRAFFIC, "\n")
+	defaultfile:write("sim/private/controls/park/static_plane_build_dis=" .. DISTANCE_PLANS, "\n")
+	defaultfile:write("sim/private/controls/reno/sloped_runways=" .. RUNWAYS_CONTOURS, "\n")
+	defaultfile:write("sim/private/controls/reno/draw_scattering=" .. ATMOSPHERIC_SCATTERING, "\n")
+	defaultfile:write("sim/private/controls/reno/draw_volume_fog01=" .. VOLUMETRIC_FOG, "\n")
+	defaultfile:write("sim/private/controls/reno/draw_per_pix_liting=" .. PIXEL_LIGHTING, "\n")
+	defaultfile:write("sim/private/controls/reno/draw_objs_06=" .. OBJECT_DENSITY, "\n")
+	defaultfile:write("sim/private/controls/reno/draw_cars_05=" .. TRAFFIC_DENSITY, "\n")
+	defaultfile:write("sim/private/controls/reno/draw_vecs_03=" .. ROAD_DENSITY, "\n")
+	defaultfile:write("sim/private/controls/reno/draw_detail_apt_03=" .. TAXIWAY_SMOOTHNESS, "\n")
+	defaultfile:write("sim/private/controls/reno/draw_for_05=" .. FOREST_DENSITY, "\n")
+	defaultfile:write("sim/private/controls/forest/inn_ring_density=" .. FOREST_INNER, "\n")
+	defaultfile:write("sim/private/controls/forest/mid_ring_density=" .. FOREST_MID, "\n")
+	defaultfile:write("sim/private/controls/forest/out_ring_density=" .. FOREST_OUTER, "\n")
+	defaultfile:write("sim/private/controls/terrain/fade_start_rat=" .. FADE_RATE, "\n")
+	defaultfile:write("sim/private/controls/ag/tile_lod_bias=" .. LOD_BIAS, "\n")
+	defaultfile:write("sim/private/controls/terrain/composite_far_dist_bias=" .. DISTANCE_BIAS, "\n")
+	defaultfile:write("sim/private/controls/reno/draw_reflect_water05=" .. WATER_REFLECTION, "\n")
+	defaultfile:write("sim/private/controls/reno/comp_texes=" .. COMPRESS_TEXTURES, "\n")
+	defaultfile:write("sim/private/controls/reno/use_bump_maps=" .. BUMPMAP_TEXTURES, "\n")
+	defaultfile:write("sim/private/controls/reno/use_detail_textures=" .. DETAIL_TEXTURES, "\n")
+	defaultfile:write("sim/private/controls/ssao/enable=" .. AMBIENT_OCCLUSION, "\n")
+	defaultfile:write("sim/private/controls/park/static_plane_density=" .. STATIC_PLANE_DENSITY, "\n")
+	defaultfile:write("sim/private/controls/shadow/csm_split_exterior=" .. SHADOW_EXTERIOR, "\n")
+	defaultfile:write("sim/private/controls/shadow/csm/far_limit=" .. SHADOW_FADE, "\n")
+	defaultfile:write("sim/private/controls/fbo/shadow_cam_size=" .. SHADOW_SIZE, "\n")
+	defaultfile:write("sim/private/controls/skyc/max_dsf_vis_ever=" .. GROUND_VISIBLE, "\n")
+	defaultfile:write("sim/private/controls/skyc/dsf_fade_ratio=" .. GROUND_FADING, "\n")
+	defaultfile:write("sim/private/controls/caps/use_reflective_water=" .. REFLECTIVE_WATER, "\n")
+	defaultfile:write("sim/private/controls/reno/draw_fft_water=" .. FFT_WATER, "\n")
+	defaultfile:write("sim/private/controls/shadow/cockpit_near_proxy=" .. COCKPIT_PROXY, "\n")
+	defaultfile:write("sim/private/controls/shadow/cockpit_near_adjust=" .. COCKPIT_NEAR, "\n")
+	defaultfile:write("sim/private/controls/clouds/overdraw_control=" .. CLOUD_PUFFS, "\n")
+	defaultfile:write("sim/private/controls/clouds/plot_radius=" .. CLOUDS_RADIUS, "\n")
+end
+
+
 function apply_settings()
     if os.clock() > start_time and do_once == false then
+	
+	save_default_settings()
 
 	--Draw Aurora Borealis. 0 (off) or 1 (on)
 	set( "sim/private/controls/reno/draw_aurora", 1.00)
@@ -107,20 +193,21 @@ function apply_settings()
 	set( "sim/private/controls/reno/draw_fft_water", 1.00)
 
 	-- Cockpit near Proxy
-	set("sim/private/controls/shadow/cockpit_near_proxy", 3.0)
+	set( "sim/private/controls/shadow/cockpit_near_proxy", 3.00)
 
 	-- Cockpit near adjust
-	set("sim/private/controls/shadow/cockpit_near_adjust", 1.0)
+	set( "sim/private/controls/shadow/cockpit_near_adjust", 1.00)
 
 	-- Controls how much cloud puffs are depicted (lower numbers produce more cloud puffs).
-	set("sim/private/controls/clouds/overdraw_control", 0.5)
+	set( "sim/private/controls/clouds/overdraw_control", 0.50)
 
 	-- Increase clouds radius
-	set("sim/private/controls/clouds/plot_radius", 2.0)
+	set( "sim/private/controls/clouds/plot_radius", 2.00)
 	
 	do_once=true
     end
 end
+
 
 do_often("apply_settings()")
 

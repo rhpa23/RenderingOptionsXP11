@@ -38,7 +38,7 @@ namespace XP11SettingsTool
         {
             try
             {
-                var linha = _lines.FirstOrDefault(l => l.Contains(tag));
+                var linha = _lines.FirstOrDefault(l => l.Contains("set( \"" + tag));
                 linha = CheckNotFoundLine(tag, linha);
 
                 var value = linha.Split(',')[1].Replace(")", "");
@@ -57,7 +57,7 @@ namespace XP11SettingsTool
             {
                 // Get from default script to avalible updates without erros.
                 var linhasDefault = File.ReadLines(FileDefaultName);
-                linha = linhasDefault.FirstOrDefault(l => l.Contains(tag));
+                linha = linhasDefault.FirstOrDefault(l => l.Contains("set( \"" + tag));
                 List<string> linesList = _lines.ToList();
                 
                 linesList.Insert(linesList.FindLastIndex(x => x.Contains("end")) - 2, linha);
@@ -71,7 +71,7 @@ namespace XP11SettingsTool
         {
             try
             {
-                var linha = _lines.FirstOrDefault(l => l.Contains(tag));
+                var linha = _lines.FirstOrDefault(l => l.Contains("set( \"" + tag));
                 linha = CheckNotFoundLine(tag, linha);
 
                 var value = linha.Split(',')[1].Replace(")", "");
@@ -112,6 +112,23 @@ namespace XP11SettingsTool
                 {
                     _lines = File.ReadLines(filePath);
 
+                    if (File.Exists(FileName))
+                    {
+                        var newList = new List<string>();
+                        var savedLines = File.ReadLines(FileName);
+                        foreach (var line in _lines.ToList())
+                        {
+                            if (savedLines.Any(x => x.Split(',')[0] == line.Split(',')[0]))
+                            {
+                                var s = savedLines.FirstOrDefault(x => x.Split(',')[0] == line.Split(',')[0]);
+                                newList.Add(s);
+                            }
+                            else
+                                newList.Add(line);
+                        }
+                        _lines = newList.ToList();
+                    }
+
                     foreach (CheckBox ckb in FindVisualChildren<CheckBox>(grdMain))
                     {
                         ckb.IsChecked = GetBoolValue(ckb.Tag.ToString());
@@ -139,8 +156,8 @@ namespace XP11SettingsTool
             {
                 foreach (CheckBox ckb in FindVisualChildren<CheckBox>(grdMain))
                 {
-                    var line = _lines.FirstOrDefault(l => l.Contains(ckb.Tag.ToString()));
-                    line = CheckNotFoundLine(ckb.Tag.ToString(), line);
+                    var line = _lines.FirstOrDefault(l => l.Contains("set( \"" + ckb.Tag.ToString()));
+                   // line = CheckNotFoundLine(ckb.Tag.ToString(), line);
                     var value = ckb.IsChecked.Value ? " 1.00)" : " 0.00)";
                     var newLine = line.Replace(line.Split(',')[1], value);
 
@@ -149,8 +166,8 @@ namespace XP11SettingsTool
 
                 foreach (Slider sld in FindVisualChildren<Slider>(grdMain))
                 {
-                    var line = _lines.FirstOrDefault(l => l.Contains(sld.Tag.ToString()));
-                    line = CheckNotFoundLine(sld.Tag.ToString(), line);
+                    var line = _lines.FirstOrDefault(l => l.Contains("set( \"" + sld.Tag.ToString()));
+                 //   line = CheckNotFoundLine(sld.Tag.ToString(), line);
                     var value = " " + sld.Value.ToString("0.00", new CultureInfo("en")) + ")";
                     var newLine = line.Replace(line.Split(',')[1], value);
 
@@ -181,16 +198,50 @@ namespace XP11SettingsTool
             }
         }
 
+        private void LoadDefaultFileValues()
+        {
+            try
+            {
+                string fileDefaultSettings =  Settings.Default.FlyWithLuaScriptsFolder + "\\default_settings.txt";
+                if (File.Exists(fileDefaultSettings))
+                {
+                    var lines = File.ReadLines(fileDefaultSettings);
+
+                    foreach (CheckBox ckb in FindVisualChildren<CheckBox>(grdMain))
+                    {
+                        var line = lines.FirstOrDefault(x => x.Contains(ckb.Tag.ToString()));
+                        if (line != null)
+                        {
+                            ckb.IsChecked = line.Split('=')[1].Trim() == "1.00";
+                        }
+                    }
+
+                    foreach (Slider sld in FindVisualChildren<Slider>(grdMain))
+                    {
+                        var line = lines.FirstOrDefault(x => x.Contains(sld.Tag.ToString()));
+
+                        if (line != null)
+                        {
+                            var value = line.Split('=')[1].Trim();
+                            sld.Value = Convert.ToDouble(value, new CultureInfo("en"));
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(this, "The default X-Plane values cannot be found. Please save yours settings in FlywithLua Scripts folder restart X-Plane and try again.", "Exclamation", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (File.Exists(FileName))
-            {
-                LoadValues(FileName);
-            }
-            else
-            {
-                LoadValues(FileDefaultName);
-            }
+            LoadValues(FileDefaultName);
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -203,7 +254,8 @@ namespace XP11SettingsTool
             MessageBoxResult result = MessageBox.Show(this, "Discard all changes and load default XP11 values?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                LoadValues(FileDefaultName);    
+                //LoadValues(FileDefaultName);    
+                LoadDefaultFileValues();
             }
         }
 
