@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using XP11SettingsTool.Properties;
+using System.Diagnostics;
 
 namespace XP11SettingsTool
 {
@@ -212,7 +213,7 @@ namespace XP11SettingsTool
                         var line = lines.FirstOrDefault(x => x.Contains(ckb.Tag.ToString()));
                         if (line != null)
                         {
-                            ckb.IsChecked = line.Split('=')[1].Trim() == "1.00";
+                            ckb.IsChecked = line.Split('=')[1].Trim() == "1";
                         }
                     }
 
@@ -242,8 +243,13 @@ namespace XP11SettingsTool
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadValues(FileDefaultName);
+            DonateLink.NavigateUri = new Uri(@"https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=B2GHF8WFN95JW&lc=BR&item_name=rhpa23&currency_code=USD&bn=PP-DonationsBF%3Abtn_donateCC_LG.gif%3ANonHosted");
         }
-
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
+        }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             SaveFile();

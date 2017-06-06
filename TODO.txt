@@ -1,0 +1,13 @@
+-- Cars density factor 7500 (default) to 60000 (high density).
+set( "sim/private/controls/cars/lod_min", 7500.00)
+
+--Object (OBJ) Bias LOD. This will decide how much detail to give objects, and from how far away these details will still be drawn.  5 (low setting) to 1 (high setting)
+set( "sim/private/controls/reno/LOD_bias_rat", 2.25)
+
+--HDR. 0 (off) or 1 (on)
+set( "sim/private/controls/reno/draw_HDR", 1.00)
+
+--Shadow texture size. Lower quality has jagged edges. 2048 (low quality), 4096 (medium quality), 8192 (high quality)
+set( "sim/private/controls/fbo/shadow_cam_size", 8192.00)
+
+

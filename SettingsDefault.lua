@@ -41,9 +41,10 @@ function save_default_settings()
 	DataRef( "COCKPIT_NEAR", "sim/private/controls/shadow/cockpit_near_adjust" )
 	DataRef( "CLOUD_PUFFS", "sim/private/controls/clouds/overdraw_control" )
 	DataRef( "CLOUDS_RADIUS", "sim/private/controls/clouds/plot_radius" )
-	
+	DataRef( "OBJ_LODBIAS", "sim/private/controls/reno/LOD_bias_rat" )
+	DataRef( "HDR", "sim/private/controls/reno/draw_HDR" )
 
-	defaultfile = os.open(SCRIPT_DIRECTORY .. "default_settings.txt", "w")
+	defaultfile = io.open(SCRIPT_DIRECTORY .. "default_settings.txt", "w")
 	defaultfile:write("sim/private/controls/reno/draw_aurora=" .. AURORA_BOREALIS, "\n")
 	defaultfile:write("sim/private/controls/reno/draw_boats=" .. CARRIERS_FRIGATES, "\n")
 	defaultfile:write("sim/private/controls/reno/draw_deer_birds=" .. BIRDS_DEER, "\n")
@@ -82,6 +83,9 @@ function save_default_settings()
 	defaultfile:write("sim/private/controls/shadow/cockpit_near_adjust=" .. COCKPIT_NEAR, "\n")
 	defaultfile:write("sim/private/controls/clouds/overdraw_control=" .. CLOUD_PUFFS, "\n")
 	defaultfile:write("sim/private/controls/clouds/plot_radius=" .. CLOUDS_RADIUS, "\n")
+	defaultfile:write("sim/private/controls/reno/LOD_bias_rat=" .. OBJ_LODBIAS, "\n")
+	defaultfile:write("sim/private/controls/reno/draw_HDR=" .. HDR, "\n")
+	defaultfile:close()
 end
 
 
@@ -177,8 +181,8 @@ function apply_settings()
 	--Shadow fade distance. XP11 uses values ranging from 500 to 1500.  XP10 used values ranging from 500 to 6000.
 	set( "sim/private/controls/shadow/csm/far_limit", 1000.00)
 
-	--Shadow texture size??? XP11 uses either 2048 or 4096. This setting was not used in XP10
-	set( "sim/private/controls/fbo/shadow_cam_size", 4096.00)
+	--Shadow texture size. Lower quality has jagged edges. 2048 (low quality), 4096 (medium quality), 8192 (high quality)
+	set( "sim/private/controls/fbo/shadow_cam_size", 2048.00)
 
 	--The following values adjust the maximum distance ground scenery is visible.  Default is 10000.  Larger values seem to have no affect, but you might try lower values if you have a low end system.
 	set( "sim/private/controls/skyc/max_dsf_vis_ever", 100000.00)
@@ -203,6 +207,12 @@ function apply_settings()
 
 	-- Increase clouds radius
 	set( "sim/private/controls/clouds/plot_radius", 2.00)
+
+	--Object (OBJ) Bias LOD. This will decide how much detail to give objects, and from how far away these details will still be drawn.  5 (low setting) to 1 (high setting)
+	set( "sim/private/controls/reno/LOD_bias_rat", 2.25)
+
+	--HDR. 0 (off) or 1 (on)
+	set( "sim/private/controls/reno/draw_HDR", 1.00)
 	
 	do_once=true
     end
