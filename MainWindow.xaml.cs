@@ -213,7 +213,7 @@ namespace XP11SettingsTool
                         var line = lines.FirstOrDefault(x => x.Contains(ckb.Tag.ToString()));
                         if (line != null)
                         {
-                            ckb.IsChecked = line.Split('=')[1].Trim() == "1";
+                            ckb.IsChecked = line.Split('=')[1].Trim() == "1.00";
                         }
                     }
 
