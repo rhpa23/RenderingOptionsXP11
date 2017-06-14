@@ -10,15 +10,20 @@ XPLM = ffi.load(XPLMlib)
 local ffi = require("ffi")
 local XPLM = ffi.load("XPLM_64")
 ffi.cdef( "typedef void * XPLMDataRef;")
-ffi.cdef( "XPLMDataRef XPLMFindDataRef(const char *inDataRefName);" )
+ffi.cdef( "XPLMDataRef XPLMFindDataRef(const char * inDataRefName);" )
 ffi.cdef( "int XPLMGetDatai(XPLMDataRef inDataRef);" )
 ffi.cdef( "void XPLMSetDatai(XPLMDataRef inDataRef, int inValue);" )
 ffi.cdef( "float XPLMGetDataf(XPLMDataRef inDataRef);" )
 ffi.cdef( "void XPLMSetDataf(XPLMDataRef inDataRef, float inValue);" )
 ffi.cdef( "double XPLMGetDatad(XPLMDataRef inDataRef);" )
 ffi.cdef( "void XPLMSetDatad(XPLMDataRef inDataRef, double inValue);" )
+
 function findDataref(drName)
-    return XPLM.XPLMFindDataRef(drName)
+	if XPLM then
+		return XPLM.XPLMFindDataRef(drName)
+	end
+	
+	return nil
 end
 function setData(handle, value, isFloat)
 	if isFloat then
