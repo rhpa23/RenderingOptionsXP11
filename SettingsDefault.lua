@@ -154,7 +154,7 @@ function apply_settings()
 	--Distance at which road traffic is visible. Default is 20000 meters. Recommend 7500.
 	setData(findDataref("sim/private/controls/cars/lod_min"), 2400.00, true)
 
-	--Distance at which static plans are visible. Default is 9260 meters. Recommend 3000.
+	--Distance at which static planes are visible. Default is 9260 meters. Recommend 3000.
 	setData(findDataref("sim/private/controls/park/static_plane_build_dis"), 2370.00, true)
 
 	--Runways follow terrain contours. 0 (off) or 1 (on)
