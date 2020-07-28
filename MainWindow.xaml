@@ -41,7 +41,7 @@
                     <Label ToolTip="Controls at which distance from the viewer the cars will appear." Content="{Binding ElementName=sldRoadTrafficDistance, Path=Value}" ContentStringFormat="Distance at which road traffic is visible: {0}" Padding="0,8,0,0" />
                     <Slider Name="sldRoadTrafficDistance" Tag="sim/private/controls/cars/lod_min" ToolTip="Controls at which distance from the viewer the cars will appear." Interval="100" AutoToolTipPlacement="BottomRight" Maximum="100000" Minimum="100" Value="20000" LargeChange="100" SmallChange="100" TickFrequency="100" IsSnapToTickEnabled="True"  />
 
-                    <Label ToolTip="Default is 9260 meters. Recommend 3000." Content="{Binding ElementName=sldPlantsDistance, Path=Value}" ContentStringFormat="Distance at which static plans are visible: {0}" Padding="0,8,0,0" />
+                    <Label ToolTip="Default is 9260 meters. Recommend 3000." Content="{Binding ElementName=sldPlantsDistance, Path=Value}" ContentStringFormat="Distance at which static planes are visible: {0}" Padding="0,8,0,0" />
                     <Slider Name="sldPlantsDistance" Tag="sim/private/controls/park/static_plane_build_dis" ToolTip="Default is 9260 meters. Recommend 3000."  Interval="10"  AutoToolTipPlacement="BottomRight" Maximum="10000" Minimum="1000" Value="9260" SmallChange="10" TickFrequency="10" LargeChange="10" IsSnapToTickEnabled="True" />
 
                     <Label ToolTip="1 (low) to 6 (high). Note this does not affect static planes manually placed by scenery designer, just the ones that automatically appear and start areas." Content="{Binding ElementName=sldStaticPlaneDensity, Path=Value}" ContentStringFormat="Static plane density: {0}" Padding="0,8,0,0" />
